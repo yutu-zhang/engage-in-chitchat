@@ -5,10 +5,29 @@
 		<my-search></my-search>
 		
 		<!-- 详情列表 -->
-		<my-top-nav :list="list"></my-top-nav>
+		<my-top-nav :list="list" :tabIndex="tabIndex" @tabtap="tabtap"></my-top-nav>
 		
 		<!-- 内容 -->
-		<my-con-list :conentList="conentList"></my-con-list>
+		<view>
+			
+			<swiper :style="{height:swiperheight+'px'}" :current="tabIndex" @change="tabChange">
+				<swiper-item v-for="(item,index) in conentList" :key="index">
+					<scroll-view scroll-y>
+						<block v-for="(items,index1) in item.images" :key="index1">
+							<my-con-list :item="item" :items="items" :index="index1"></my-con-list>
+							<view class="p-2 mr-3">
+								{{item.infonum}}
+							</view>
+						</block>
+					</scroll-view>
+				</swiper-item>
+			</swiper>
+			
+		</view>
+		
+		
+		
+		<!-- <my-con-list :conentList="conentList"></my-con-list> -->
 			
 	</view>
 </template>
@@ -27,11 +46,19 @@
 				statusBarHeight : statusBarHeight,
 				list:[],
 				conentList:[],
+				tabIndex:0,
+				swiperheight:500
 			}
 		},
 		components:{mySearch,myTopNav,myConList},
 		onLoad() {
-			this.getMessage()
+			this.getMessage(),
+			uni.getSystemInfo({
+				success:(res)=> {
+					let height = res.windowHeight - uni.upx2px(100)
+					this.swiperheight = height
+				}
+			})
 		},
 		methods: {
 			getMessage(){
@@ -43,6 +70,12 @@
 					this.conentList = res.data.data.list
 				})
 			},
+			tabtap(index){
+				this.tabIndex = index
+			},
+			tabChange(e){
+				this.tabIndex = e.detail.current
+			}
 		}
 	}
 </script>

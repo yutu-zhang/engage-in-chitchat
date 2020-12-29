@@ -1,7 +1,7 @@
 <template>
 
 	<view>
-		<view class="his px-2 pt-4">
+		<view class="his px-2 ">
 			<view>
 				<my-icon iconName="icon-liulan"></my-icon>
 				<text>浏览历史</text>
@@ -29,7 +29,7 @@
 <style scoped>
 	/* 浏览历史 */
 	.his>view {
-		line-height: 120rpx;
+		line-height: 100rpx;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -38,5 +38,4 @@
 		flex: 1;
 		padding-left: 10rpx;
 	}
-	
 </style>

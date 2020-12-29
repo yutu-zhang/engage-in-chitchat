@@ -12,7 +12,10 @@
 			"style":{}
 		},
 		{"path":"pages/search/search"}  ,//搜索页面
-		{"path":"pages/user-set/user-set"}  //用户设置页面
+		{"path":"pages/user-set/user-set"},  //用户设置页面:
+		{"path":"pages/news-editor/editor"}, //  编辑话题
+		{"path":"pages/login/login"}  // 登录注册
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

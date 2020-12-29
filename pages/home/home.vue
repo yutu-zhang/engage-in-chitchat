@@ -8,11 +8,15 @@
 		<!-- user -->
 		<my-one-user></my-one-user>
 		
-		<!-- 动态特兹 -->
+		<!-- 动态 评论 粉丝 -->
 		<my-two-message></my-two-message>
-		
+		<view class="imgs">
+			<image src="../../static/demo/datapic/1.jpg" mode="aspectFill"></image>
+		</view>
 		<!-- 浏览历史 -->
-		<my-three-his></my-three-his>
+		<view>
+			<my-three-his></my-three-his>
+		</view>
 		
 		
 	</view>
@@ -37,5 +41,14 @@
 	
 </script>
 
-<style>
+<style scoped>
+	.imgs {
+		height: 170rpx;
+		padding: 20rpx 30rpx;
+	}
+	.imgs image {
+		width: 100%;
+		height: 170rpx;
+		border-radius: 10rpx;
+	}
 </style>

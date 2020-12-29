@@ -364,6 +364,9 @@
  }
 .rounded-circle { border-radius: 100rpx;}
 .rounded-0 { border-radius: 0;}
+.rounded-20 {border-radius: 20rpx;}
+.rounded-40 {border-radius: 40rpx;}
+.rounded-80 {border-radius: 80rpx;}
 /* 显示 */
 /* #ifndef APP-PLUS-NVUE */
 .d-none{ display: none; }
