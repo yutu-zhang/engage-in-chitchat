@@ -31,3 +31,14 @@ export function sendPhoneCode(phone){
 		}
 	})
 }
+
+// 退出登录
+export function loginOut(token){
+	return request({
+		url: '/user/logout',
+		method:'POST',
+		data:{
+			token
+		}
+	})
+}

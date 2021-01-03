@@ -6,13 +6,14 @@
 				<my-icon iconName="icon-sousuo" iconSize="30" iconColor="text-muted"></my-icon>
 				<text class="pl-1">搜索糗事</text>
 			</view>
-			<my-icon iconName="icon-bianji1" iconSize="50" iconColor="text-dark"></my-icon>
+			<my-icon iconName="icon-bianji1" iconSize="50" iconColor="text-dark" @my-click="jumpBian"></my-icon>
 		</view>
 		
 	</view>
 </template>
 
 <script>
+	const token = uni.getStorageSync('token')
 	export default {
 		data(){
 			return {
@@ -23,8 +24,15 @@
 			search(){
 				uni.navigateTo({
 					url:"/pages/search/search",
-					// delta:1
 				})
+			},
+			jumpBian(){
+				if(token!=''){
+				// console.log('123')
+				uni.navigateTo({
+					url:"/pages/add-input/add-input"
+				})
+				}
 			}
 		}
 	}

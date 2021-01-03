@@ -11,10 +11,14 @@
 			"path":"pages/home/home",
 			"style":{}
 		},
-		{"path":"pages/search/search"}  ,//搜索页面
-		{"path":"pages/user-set/user-set"},  //用户设置页面:
-		{"path":"pages/news-editor/editor"}, //  编辑话题
-		{"path":"pages/login/login"}  // 登录注册
+		{"path":"pages/login/login"}  ,// 登录注册
+		{"path":"pages/user-space/user-space"},  // 用户信息页
+		{"path":"pages/add-input/add-input"},  // 首页 编辑页面
+		{"path":"pages/search/search"},// 首页 搜索页面
+		{"path":"pages/topic-nav/topic-nav"},   // 动态--》话题页
+		{"path":"pages/topic-detail/topic-detail"}, // 动态--> 详情页
+		{"path":"pages/user-set/user-set"},  // 我的 用户设置页面:
+		{"path":"pages/user-list/user-list"}  // 消息 用户好友列表
 		
 	],
 	"globalStyle": {

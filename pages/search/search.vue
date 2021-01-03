@@ -1,5 +1,6 @@
 <template>
 	<view> 
+		<view :style="{height : `${statusBarHeight}px`}" class="cal"></view>
 		<view class="flex justify-between align-center p-2">
 			<my-icon class="icon" iconName="icon-sousuo" iconSize="26" iconColor="text-muted"></my-icon>
 			<input type="text" placeholder="搜索糗事" />
@@ -10,9 +11,12 @@
 </template>
 
 <script>
+	//获取顶部通知栏的高度
+	const statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
 	export default {
 		data(){
-			return {}
+			return {
+				statusBarHeight : statusBarHeight,}
 		},
 		methods:{
 			hui(){
@@ -25,7 +29,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.icon {
 		position: absolute;
 		left: 40rpx;

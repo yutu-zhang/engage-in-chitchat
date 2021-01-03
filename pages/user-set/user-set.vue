@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<view :style="{height : `${statusBarHeight}px`}"></view>
+
 		<view class="flex justify-between p-2 align-center">
 			<my-icon iconName="icon-fanhui" iconSize="50" @my-click="fanhui"></my-icon>
 			<text class="font-weight-bold flex-1 pl-2 text-center">设置</text>
@@ -64,10 +66,15 @@
 </template>
 
 <script>
+	import {loginOut} from '../../model/login.js'
+	//获取顶部通知栏的高度
+	const statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
 	export default {
 		data() {
 			return {
-				setCut: false
+				statusBarHeight : statusBarHeight,
+				setCut: false,
+				token:uni.getStorageSync('token').toString()
 			}
 		},
 		methods: {
@@ -81,13 +88,14 @@
 
 				uni.showModal({
 					content: '是否要退出登录',
-					success:res=>{
+					success:async (res)=>{
 						if (res.confirm) {
 							console.log('用户点击确定');
-							this.setCut = true
-							uni.removeStorageSync('token')
-							uni.removeStorageSync('user')
-							uni.removeStorageSync('userinfo')
+							let {data} = await loginOut(this.token)
+							// this.setCut = true
+							// uni.removeStorageSync('token')
+							// uni.removeStorageSync('user')
+							// uni.removeStorageSync('userinfo')
 							// uni.switchTab({
 							// 	url:'/pages/home/home'
 							// })

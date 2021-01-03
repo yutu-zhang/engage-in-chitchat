@@ -3,7 +3,7 @@
 		<view class="fu">
 			 <scroll-view class="scroll-view_H" scroll-x @scroll="scroll">
 				<view class="flex px-2">
-					<view class="flex justify-between px-3 navitem" v-for="(item,index) in list" :key="index" @tap="tabtap(index)">
+					<view class="flex justify-between px-3 navitem" v-for="(item,index) in list" :key="index" @tap="tabtap(item,index)">
 						<text :class="{'navactive':tabIndex==index}">{{item.classname}}</text>
 						<view class="swiper-tab-line"></view>
 					</view>
@@ -32,8 +32,8 @@
 			}
 		},
 		methods:{
-			tabtap(index){
-				this.$emit('tabtap',index)
+			tabtap(item,index){
+				this.$emit('tabtap',item,index)
 			}
 		}
 	}

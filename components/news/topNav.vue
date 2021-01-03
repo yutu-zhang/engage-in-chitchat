@@ -1,8 +1,8 @@
 <template>
-		<view class="flex justify-between align-center p-2">
-			<view class="flex-1 flex justify-center">
-				<view :class="activeIndex ===index?'topactive':''" v-for="(item,index) in navList" :key="index">
-					<text class="px-2">{{item}}</text>
+		<view class="flex justify-between align-center pb-2 px-2">
+			<view class="flex-1 flex justify-center align-center">
+				<view @tap="tabtap(index)" v-for="(item,index) in navList" :key="index">
+					<text class="px-2" :class="{'topactive':activeIndex==index}" >{{item}}</text>
 				</view>
 				
 			</view>
@@ -21,11 +21,12 @@
 		},
 		methods:{
 			jumpBianji(){
-				uni.navigateTo({
-					url:'/pages/news-editor/editor',
-					animationType: 'pop-in',
-					animationDuration: 200
+				uni.redirectTo({
+					url:'/pages/add-input/add-input',
 				})
+			},
+			tabtap(index){
+				this.$emit('tabtap',index)
 			}
 		}
 	}
@@ -34,7 +35,7 @@
 <style scoped>
 	.topactive {
 		color: #FB5A7C;
-		font-size: 34rpx;
-		font-weight: 550;
+		/* font-size: 39rpx;
+		font-weight:600; */
 	}
 </style>

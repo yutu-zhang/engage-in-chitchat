@@ -1,8 +1,23 @@
-// import config from './config.js'
+import config from './config.js'
 
 import uniRequest from 'uni-request';
 
-uniRequest.defaults.baseURL = '/api';
+// console.log(process.env.NODE_ENV)
+
+let url = "";
+if(process.env.NODE_ENV ==='development'){
+	url = '/api'
+}else {
+	url = '/pro'
+}
+
+//  #ifdef H5
+		uniRequest.defaults.baseURL = url;
+//  #endif
+
+// #ifndef H5
+		uniRequest.defaults.baseURL = config.api_base_url
+// #endif
 
 // 请求拦截
 uniRequest.interceptors.request.use(

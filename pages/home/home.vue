@@ -1,6 +1,8 @@
 <template>
 	<view>
-		<view class="top flex justify-between p-2">
+		<view :style="{height : `${statusBarHeight}px`}"></view>
+
+		<view class="top flex justify-between p-1">
 			<text class="flex-1 text-center font-md">我的</text>
 			<my-icon iconName="icon-gengduo1" iconSize="44" @my-click="setting"></my-icon>
 		</view>
@@ -27,8 +29,14 @@
 	import myTwoMessage from '../../components/my/myTwoMessage.vue';
 	import myThreeHis from '../../components/my/mythreeHis.vue';
 	
-	
+	//获取顶部通知栏的高度
+	const statusBarHeight = uni.getSystemInfoSync().statusBarHeight;
 	export default{
+		data(){
+			return {
+				statusBarHeight : statusBarHeight,
+			}
+		},
 		components:{myOneUser,myTwoMessage,myThreeHis},
 		methods:{
 			setting(){
