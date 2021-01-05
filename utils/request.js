@@ -22,6 +22,10 @@ if(process.env.NODE_ENV ==='development'){
 // 请求拦截
 uniRequest.interceptors.request.use(
 	request => {
+		let token = uni.getStorageSync('token')
+		if(token){
+			request.headers.token = token
+		}
 		//配置基本信息	
 		return request;
 	},

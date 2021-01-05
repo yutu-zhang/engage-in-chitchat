@@ -6,12 +6,12 @@
 					<image class="userimg" :src="item.user.userpic" mode="scaleToFill" lazy-load @click="userinfoPage"></image>
 					<view class="flex-1 flex flex-column pl-2">
 						<text>{{item.user.username}}</text>
-						<text class="text-secondary font-smaller pt-1">{{item.create_time |timeFilter}}</text>
+						<text class="text-secondary font-small pt-1">{{item.create_time |timeFilter}}</text>
 					</view>
 					<button type="default">关注</button>
 				</view>
 				<!-- 留言内容 -->
-				<view>
+				<view @click="jumpDetail(item.id,item)">
 					<view>{{item.content}}</view>
 					<view v-if="item.titlepic==''"></view>
 					<view v-if="item.titlepic" class="imagesimg"><image :src="item.titlepic" mode="aspectFill" lazy-load></image></view>
@@ -28,9 +28,9 @@
 						<text v-if="item.cai_count===0">踩 </text>
 						<text v-else> {{item.cai_count}}</text>
 					</view>
-					<view>
+					<view @click="jumpDetail(item.id,item)">
 						<my-icon iconName="icon-pinglun" iconSize="44"></my-icon>
-						<text v-if="item.comment_count===0"></text>
+						<text v-if="item.comment_count===0">评论</text>
 						<text v-else> {{item.comment_count}}</text>
 					</view>
 					<view>
@@ -61,6 +61,13 @@
 				console.log('123')
 				uni.reLaunch({
 					url:"/pages/user-space/user-space"
+				})
+			},
+			// 跳转详情页面
+			jumpDetail(id,details){
+				const detail = JSON.stringify(details)
+				uni.redirectTo({
+					url:`/pages/detail/detail?id=${id}&detail=${detail}`
 				})
 			}
 		},

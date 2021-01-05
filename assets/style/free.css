@@ -344,6 +344,8 @@
 .border-light {border-color: #f8f9fa;}
 .border-dark {border-color: #343a40;}
 .border-white {border-color: #FFFFFF;}
+/* 7像素的灰线  */
+.xian{height:14rpx; background-color: rgb(245, 245, 244);}
 /* 圆⻆ */
 .rounded { border-radius: 8rpx;}
 .rounded-top {

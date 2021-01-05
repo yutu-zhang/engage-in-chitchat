@@ -8,7 +8,7 @@
 		</view>
 		
 		<!-- user -->
-		<my-one-user></my-one-user>
+		<my-one-user :flag="flag"></my-one-user>
 		
 		<!-- 动态 评论 粉丝 -->
 		<my-two-message></my-two-message>
@@ -23,7 +23,7 @@
 		
 	</view>
 </template>
-
+  
 <script>
 	import myOneUser from '../../components/my/myOneUser.vue';
 	import myTwoMessage from '../../components/my/myTwoMessage.vue';
@@ -35,6 +35,7 @@
 		data(){
 			return {
 				statusBarHeight : statusBarHeight,
+				flag:false
 			}
 		},
 		components:{myOneUser,myTwoMessage,myThreeHis},
@@ -44,6 +45,18 @@
 					url:'/pages/user-set/user-set'
 				})
 			}
+		},
+		onShow() {
+			const token = uni.getStorageSync('token')
+			console.log(token)
+			if(token){
+				this.flag = true
+			}else{
+				this.flag = false
+			}
+		},
+		onLoad() {
+			
 		}
 	}
 	

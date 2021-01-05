@@ -74,7 +74,8 @@
 			return {
 				statusBarHeight : statusBarHeight,
 				setCut: false,
-				token:uni.getStorageSync('token').toString()
+				token:uni.getStorageSync('token').toString(),
+				flag:false
 			}
 		},
 		methods: {
@@ -83,6 +84,7 @@
 					url:'/pages/home/home'
 				})
 			},
+			
 			// 退出登录
 			logOut() {
 
@@ -91,14 +93,15 @@
 					success:async (res)=>{
 						if (res.confirm) {
 							console.log('用户点击确定');
+							
 							let {data} = await loginOut(this.token)
-							// this.setCut = true
-							// uni.removeStorageSync('token')
-							// uni.removeStorageSync('user')
-							// uni.removeStorageSync('userinfo')
-							// uni.switchTab({
-							// 	url:'/pages/home/home'
-							// })
+							this.setCut = true
+							uni.removeStorageSync('token')
+							uni.removeStorageSync('user')
+							uni.removeStorageSync('userinfo')
+							uni.switchTab({
+								url:'/pages/home/home'
+							})
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}

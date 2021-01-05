@@ -1,10 +1,14 @@
 <template>
 <view>
 	<view :style="{height : `${statusBarHeight}px`}"></view>
-	<view>
+	<view class="position-relative">
+		<!-- <view class="topview flex justify-between p-1 position-absolute top-0 left-0 right-0">
+			<view><my-icon iconName="icon-fanhui" iconSize="54" iconColor="text-white" @my-click="fanhui"></my-icon></view>
+			<view><my-icon iconName="icon-gengduo1" iconColor="text-white"></my-icon></view>
+		</view> -->
 		<view class="topview flex justify-between p-1 position-absolute top-0 left-0 right-0">
-			<view><my-icon iconName="icon-fanhui" iconSize="54" iconColor="text-light" @my-click="fanhui"></my-icon></view>
-			<view><my-icon iconName="icon-gengduo1" iconColor="text-light"></my-icon></view>
+			<my-icon iconName="icon-fanhui" iconSize="54" iconColor="text-white" @my-click="fanhui"></my-icon>
+			<my-icon iconName="icon-gengduo1" iconColor="text-white"></my-icon>
 		</view>
 		<view class="bigimg">
 			<image :src="userMenu.titlepic" mode="aspectFill" lazy-load></image>
@@ -54,8 +58,8 @@
 		},
 		methods:{
 			fanhui(){
-				uni.navigateBack({
-					delta:2
+				uni.switchTab({
+					url:"/pages/news/news"
 				})
 			},
 			// 获取话题的内容
@@ -77,6 +81,7 @@
 <style scoped>
 	.topview {
 		z-index: 999;
+		height: 64rpx;
 	}
 	.topview>view {
 		width: 64rpx;
@@ -84,6 +89,9 @@
 		line-height: 64rpx;
 		text-align: center;
 		border-radius: 50%;
+		background-color: rgba(0,0,0,.5);
+	}
+	.topview>view text {
 		background-color: rgba(0,0,0,.5);
 	}
 	.bigimg {
